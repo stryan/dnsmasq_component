@@ -1,0 +1,25 @@
+[Unit]
+Description=dnsmasq container
+StartLimitIntervalSec=400
+StartLimitBurst=3
+
+[Service]
+Restart=on-failure
+RestartSec=5s
+
+[Container]
+Image=docker.io/dockurr/dnsmasq:{{ .containerTag }}
+ContainerName=dnsmasq
+PublishPort={{ .hostPort }}:53/udp
+ReloadSignal=SIGHUP
+Volume={{ m_dataDir "dnsmasq" }}/dnsmasq.conf:/etc/dnsmasq.conf:Z
+{{- if .useSeperateFiles }}
+Volume={{ m_dataDir "dnsmasq" }}/hosts:/etc/hosts:Z
+Volume={{ m_dataDir "dnsmasq" }}/ethers:/etc/ethers:Z
+{{- end }}
+AddCapability=NET_ADMIN
+AutoUpdate=registry
+
+[Install]
+WantedBy=multi-user.target default.target
+

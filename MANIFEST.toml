@@ -1,0 +1,11 @@
+[Defaults]
+containerTag = "latest"
+hostPort = "53"
+useSeperateFiles = true
+confContents = ""
+hosts = ""
+ethers = ""
+
+[[Services]]
+Service = "dnsmasq.container"
+ReloadedBy = ["hosts","ethers","dnsmasq.conf"]
