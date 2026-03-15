@@ -5,11 +5,12 @@ This is an example [Materia](https://primamateria.systems) component for install
 You can use it in your own Materia repository as a remote component like so:
 
 ```
-      [Remote.dnsmasq]
-      URL = "git://github.com/stryan/dnsmasq_component"
+      [Remotes.dnsmasq.git]
+      URL = "https://github.com/stryan/dnsmasq_component"
 ```
 
-This component was designed for Materia v0.5.0.
+This component was designed for Materia v0.6.0.
+
 # Configuration via Attributes
 
 By default this component sets up no configuration for dnsmasq. The following attributes are available for configuration:
